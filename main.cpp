@@ -12,13 +12,13 @@ QMediaPlayer *bulletsound;
 void sound_func()   //the function to run the sound of bulle shot concurrently
 {
     bulletsound = new QMediaPlayer();
-    bulletsound->setMedia(QUrl("qrc:/sound/bullet.wav"));
+    bulletsound->setMedia(QUrl("qrc:/sound/resources/sound/bullet.wav"));
     if(bulletsound->state()==QMediaPlayer::PlayingState){
         bulletsound->setPosition(0);
     }
     else
        {
-        bulletsound->setMedia(QUrl("qrc:/sound/bullet.wav"));
+        bulletsound->setMedia(QUrl("qrc:/sound/resources/sound/bullet.wav"));
         bulletsound->play();
        }
 }
@@ -36,4 +36,3 @@ int main(int argc, char *argv[]){
 
     return a.exec();
 }
-

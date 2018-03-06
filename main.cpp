@@ -27,10 +27,24 @@ int main(int argc, char *argv[]){
     QApplication a(argc, argv);
 
     game = new Game();
+	QMovie *movie = new QMovie(":/images/resources/images/loading.gif");
+	
+    if(!movie->isValid())
+        {
+            qDebug() << "ERROR(main.cpp) -> Failed To Load : resources/images/loading.gif";
+            std::exit(EXIT_FAILURE);
+        }
+    QLabel *label = new QLabel;
+
+
+    label->setMovie(movie);
+
+    movie->start();
+    label->show();
         QElapsedTimer timer;
          timer.start();
 
-
+	QTimer::singleShot(3000,label,SLOT(close()));
        QTimer::singleShot(3000,game,SLOT(show()));
        game->displayMainMenu();
 

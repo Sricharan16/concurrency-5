@@ -36,8 +36,8 @@ Game::Game( ){
 void Game::displayMainMenu()
 {
 
-    QGraphicsTextItem *titleText = new QGraphicsTextItem(QString("BASIC GAME"));
-    QFont titleFont("comicsans",50);
+    QGraphicsTextItem *titleText = new QGraphicsTextItem(QString("TrapShooting Model Game"));
+    QFont titleFont("comicsans",40);
     titleText->setFont(titleFont);
     int txPos = this->width()/2-titleText->boundingRect().width()/2;
     int tyPos =150;

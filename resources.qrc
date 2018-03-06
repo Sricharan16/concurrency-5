@@ -8,5 +8,6 @@
         <file>resources/images/bg.png</file>
 	 <file>resources/images/bullet.png</file>
 	<file>resources/images/enemy.png</file>
+	<file>resources/images/loading.gif</file>
     </qresource>
 </RCC>

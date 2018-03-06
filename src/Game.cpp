@@ -1,7 +1,7 @@
 #include "Game.h"
 #include "myrect.h"
 #include<QMediaPlayer>
-#include<QVideoWidget>
+//#include<QVideoWidget>
 #include "Button.h"
 #include <QGraphicsTextItem>
 #include<QObject>
@@ -11,21 +11,24 @@
 #include<QTimer>
 #include<QMediaPlaylist>
 #include<QtConcurrent/qtconcurrentrun.h>
+#include <QBrush>
 using namespace QtConcurrent;
 extern void esp();
 Game::Game( ){
 
-    
+
     scene = new QGraphicsScene();
     scene->setSceneRect(0,0,800,600);
-  
+
+
 
     setScene(scene);
+    setBackgroundBrush(QBrush(QImage(":/images/bg.png")));
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setFixedSize(800,600);
 
-    
+
 
 
 }
@@ -61,7 +64,7 @@ void Game::starti()
     scene->clear();
     scene = new QGraphicsScene();
     scene->setSceneRect(0,0,800,600);
-    
+
     player = new MyRect();
     player->setRect(0,0,50,50);	//setting the player position and dimensions
 
@@ -70,16 +73,16 @@ void Game::starti()
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setFixedSize(800,600);		//setting the window size
 
-    
+
     scene->addItem(player);
-    
+
     score = new Score();
     scene->addItem(score);
-    
+
     score2 = new Score2();
     score2->setPos(score2->x(),score2->y()+25);
     scene->addItem(score2);
-  
+
     player->setFlag(QGraphicsItem::ItemIsFocusable);
     player->setFocus();
 
@@ -99,11 +102,10 @@ void Game::starti()
 
     player->setPos(800-player->rect().width(),(600/2) - player->rect().height()/2);
 
- 
+
     QTimer * timer = new QTimer();
     QObject::connect(timer,SIGNAL(timeout()),player,SLOT(spawn()));
     timer->start(2000);
- 
-}
 
+}
 

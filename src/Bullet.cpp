@@ -14,7 +14,7 @@ extern Game * game;
 Bullet::Bullet(): QObject(), QGraphicsPixmapItem(){
     // drew the rect
     setPixmap(QPixmap(":/images/bullet.png"));
-    setScale(0.15);
+    setScale(0.1);
 
     // connect
     QTimer * timer = new QTimer(this);

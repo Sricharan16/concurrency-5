@@ -8,13 +8,15 @@
 #include "Score2.h"
 #include <QFont>
 extern Game *game;
-Enemy::Enemy(): QObject(), QGraphicsRectItem(){
+Enemy::Enemy(): QObject(), QGraphicsPixmapItem(){
     //set random position
     int random_number = rand() % 550;
     setPos(0,random_number);
 
     // drew the rect
-    setRect(0,0,50,50);
+    setPixmap(QPixmap(":/images/enemy.png"));
+        //setTransformOriginPoint(50,50);
+        setScale(0.15);
 
     // connect
     QTimer * timer = new QTimer(this);
@@ -26,9 +28,11 @@ Enemy::Enemy(): QObject(), QGraphicsRectItem(){
 void Enemy::move(){
     // move enemy down
     setPos(x()+5,y());
-    if (pos().x() + rect().width() > 800){
+    if (pos().x() > 800){
         scene()->removeItem(this);
-        game->score2->increase();
+        game->score2->decrease();
+        if(game->score2->gethealth()==0)
+            game->close();
         //qDebug() << "this reached";
         delete this;
     }

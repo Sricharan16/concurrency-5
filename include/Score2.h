@@ -4,9 +4,10 @@
 class Score2:public QGraphicsTextItem{
 public:
     Score2(QGraphicsItem * parent=0);
-    void increase();
+    void decrease();
     int gethealth();
 private:
     int score2;
 };
 #endif // SCORE1_H
+

@@ -11,18 +11,33 @@ extern Game *game;
 Enemy::Enemy(): QObject(), QGraphicsPixmapItem(){
     //set random position
     int random_number = rand() % 550;
+	int speed=50;
     setPos(0,random_number);
 
     // drew the rect
-    setPixmap(QPixmap(":/images/enemy.png"));
+    setPixmap(QPixmap(":/images/resources/images/enemy.png"));
         //setTransformOriginPoint(50,50);
         setScale(0.15);
 
     // connect
+	if(game->score->getscore() >5 && game->score->getscore()<=10 )
+		speed=40;
+	else if(game->score->getscore() >10 && game->score->getscore()<=15)
+		speed=35;
+	else if(game->score->getscore() >15 && game->score->getscore()<=20)
+		speed=30;
+	else if(game->score->getscore() >20 && game->score->getscore()<=25)
+		speed=25;
+	else
+	{
+		if(game->score->getscore() >25)
+			speed=20;
+	}
+			
     QTimer * timer = new QTimer(this);
     connect(timer,SIGNAL(timeout()),this,SLOT(move()));
 
-    timer->start(50);
+    timer->start(speed);
 }
 
 void Enemy::move(){

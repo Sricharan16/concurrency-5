@@ -23,7 +23,7 @@ Game::Game( ){
 
 
     setScene(scene);
-    setBackgroundBrush(QBrush(QImage(":/images/bg.png")));
+    setBackgroundBrush(QBrush(QImage(":/images/resources/images/bg.png")));
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setFixedSize(800,600);
@@ -90,7 +90,7 @@ void Game::starti()
 
 
     QMediaPlaylist *playlist = new QMediaPlaylist();
-    playlist->addMedia(QUrl("qrc:/sound/bgm.mp3"));
+    playlist->addMedia(QUrl("qrc:/sound/resources/sound/bgm.mp3"));
     playlist->setPlaybackMode(QMediaPlaylist::Loop);
 
     QMediaPlayer *music = new QMediaPlayer();

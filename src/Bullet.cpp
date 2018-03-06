@@ -13,7 +13,7 @@
 extern Game * game;
 Bullet::Bullet(): QObject(), QGraphicsPixmapItem(){
     // drew the rect
-    setPixmap(QPixmap(":/images/bullet.png"));
+    setPixmap(QPixmap(":images/resources/images/bullet.png"));
     setScale(0.1);
 
     // connect

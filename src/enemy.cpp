@@ -28,10 +28,12 @@ Enemy::Enemy(): QObject(), QGraphicsPixmapItem(){
 		speed=30;
 	else if(game->score->getscore() >20 && game->score->getscore()<=25)
 		speed=25;
-	else
+	else if(game->score->getscore() >25 && game->score->getscore()<=30)
+            speed=20;
+    else
 	{
-		if(game->score->getscore() >25)
-			speed=20;
+		if(game->score->getscore() >30)
+			speed=10;
 	}
 			
     QTimer * timer = new QTimer(this);
